@@ -65,7 +65,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/" legacyBehavior passHref>
+            <Link href="/">
               <SidebarMenuButton
                 isActive={isActive('/')}
                 tooltip="Dasbor"
@@ -76,7 +76,7 @@ export function AppSidebar() {
             </Link>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <Link href="/inspection" legacyBehavior passHref>
+            <Link href="/inspection">
               <SidebarMenuButton
                 isActive={isActive('/inspection')}
                 tooltip="Inspeksi AI"
