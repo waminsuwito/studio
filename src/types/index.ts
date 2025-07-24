@@ -1,4 +1,4 @@
-export type EquipmentStatus = 'Good' | 'Attention' | 'Broken';
+export type EquipmentStatus = 'Baik' | 'Perhatian' | 'Rusak';
 
 export interface Equipment {
   id: string;

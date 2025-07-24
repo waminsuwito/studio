@@ -26,8 +26,8 @@ import { Loader2, Sparkles, Lightbulb, AlertTriangle } from 'lucide-react';
 const formSchema = z.object({
   report: z
     .string()
-    .min(50, { message: 'Report must be at least 50 characters long.' })
-    .max(5000, { message: 'Report must be no more than 5000 characters.' }),
+    .min(50, { message: 'Laporan harus memiliki panjang minimal 50 karakter.' })
+    .max(5000, { message: 'Laporan tidak boleh lebih dari 5000 karakter.' }),
 });
 
 export function InspectionForm() {
@@ -49,12 +49,12 @@ export function InspectionForm() {
       const output = await suggestInspections({ report: values.report });
       setResult(output);
     } catch (error) {
-      console.error('AI inspection failed:', error);
+      console.error('Pemeriksaan AI gagal:', error);
       toast({
         variant: 'destructive',
-        title: 'Error',
+        title: 'Kesalahan',
         description:
-          'Failed to get suggestions from AI. Please try again later.',
+          'Gagal mendapatkan saran dari AI. Silakan coba lagi nanti.',
       });
     } finally {
       setIsLoading(false);
@@ -65,7 +65,7 @@ export function InspectionForm() {
     <div className="grid gap-8 lg:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>Submit Report</CardTitle>
+          <CardTitle>Kirim Laporan</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -75,10 +75,10 @@ export function InspectionForm() {
                 name="report"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Equipment Status Report</FormLabel>
+                    <FormLabel>Laporan Status Peralatan</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="e.g., Vibration: 0.5 mm/s, Temperature: 65°C, Pressure: 150 PSI..."
+                        placeholder="contoh, Getaran: 0.5 mm/s, Suhu: 65°C, Tekanan: 150 PSI..."
                         className="min-h-[200px] lg:min-h-[300px]"
                         {...field}
                       />
@@ -93,7 +93,7 @@ export function InspectionForm() {
                 ) : (
                   <Sparkles className="mr-2 h-4 w-4" />
                 )}
-                Analyze Report
+                Analisis Laporan
               </Button>
             </form>
           </Form>
@@ -106,10 +106,10 @@ export function InspectionForm() {
             <CardContent className="flex flex-col items-center gap-4 text-center p-6">
               <Loader2 className="h-12 w-12 animate-spin text-primary" />
               <h3 className="font-headline text-xl font-semibold">
-                Analyzing...
+                Menganalisis...
               </h3>
               <p className="text-muted-foreground">
-                Our AI is inspecting your report for anomalies.
+                AI kami sedang memeriksa laporan Anda untuk anomali.
               </p>
             </CardContent>
           </Card>
@@ -121,7 +121,7 @@ export function InspectionForm() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="text-accent" />
-                  Anomalies Detected
+                  Anomali Terdeteksi
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -135,7 +135,7 @@ export function InspectionForm() {
                   </div>
                 ) : (
                   <p className="text-muted-foreground">
-                    No significant anomalies were detected.
+                    Tidak ada anomali signifikan yang terdeteksi.
                   </p>
                 )}
               </CardContent>
@@ -144,7 +144,7 @@ export function InspectionForm() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Lightbulb className="text-accent" />
-                  AI Reasoning
+                  Penalaran AI
                 </CardTitle>
               </CardHeader>
               <CardContent>

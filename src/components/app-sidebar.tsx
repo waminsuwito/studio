@@ -68,10 +68,10 @@ export function AppSidebar() {
             <Link href="/" legacyBehavior passHref>
               <SidebarMenuButton
                 isActive={isActive('/')}
-                tooltip="Dashboard"
+                tooltip="Dasbor"
               >
                 <LayoutDashboard />
-                <span>Dashboard</span>
+                <span>Dasbor</span>
               </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
@@ -79,17 +79,17 @@ export function AppSidebar() {
             <Link href="/inspection" legacyBehavior passHref>
               <SidebarMenuButton
                 isActive={isActive('/inspection')}
-                tooltip="AI Inspection"
+                tooltip="Inspeksi AI"
               >
                 <BotMessageSquare />
-                <span>AI Inspection</span>
+                <span>Inspeksi AI</span>
               </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>
 
         <SidebarGroup className="mt-4">
-          <SidebarGroupLabel>Operators</SidebarGroupLabel>
+          <SidebarGroupLabel>Operator</SidebarGroupLabel>
           <div className="flex flex-col gap-2">
             {operators.map((operator) => (
               <div
@@ -121,7 +121,7 @@ export function AppSidebar() {
       <SidebarFooter>
         <Button variant="ghost" className="justify-start gap-2">
           <LogOut />
-          <span className="group-data-[collapsible=icon]:hidden">Log Out</span>
+          <span className="group-data-[collapsible=icon]:hidden">Keluar</span>
         </Button>
       </SidebarFooter>
     </Sidebar>

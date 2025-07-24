@@ -27,44 +27,44 @@ import {
 const equipmentData: Equipment[] = [
   {
     id: 'EQP-001',
-    location: 'Sector A, Bay 1',
-    status: 'Good',
+    location: 'Sektor A, Ruang 1',
+    status: 'Baik',
     lastChecked: '2024-07-20',
   },
   {
     id: 'EQP-002',
-    location: 'Sector A, Bay 2',
-    status: 'Attention',
+    location: 'Sektor A, Ruang 2',
+    status: 'Perhatian',
     lastChecked: '2024-07-19',
   },
   {
     id: 'EQP-003',
-    location: 'Sector B, Bay 1',
-    status: 'Good',
+    location: 'Sektor B, Ruang 1',
+    status: 'Baik',
     lastChecked: '2024-07-21',
   },
   {
     id: 'EQP-004',
-    location: 'Sector C, Bay 1',
-    status: 'Broken',
+    location: 'Sektor C, Ruang 1',
+    status: 'Rusak',
     lastChecked: '2024-07-18',
   },
   {
     id: 'EQP-005',
-    location: 'Sector C, Bay 2',
-    status: 'Good',
+    location: 'Sektor C, Ruang 2',
+    status: 'Baik',
     lastChecked: '2024-07-21',
   },
   {
     id: 'EQP-006',
-    location: 'Maintenance',
-    status: 'Good',
+    location: 'Perawatan',
+    status: 'Baik',
     lastChecked: '2024-07-22',
   },
   {
     id: 'EQP-007',
-    location: 'Sector A, Bay 3',
-    status: 'Attention',
+    location: 'Sektor A, Ruang 3',
+    status: 'Perhatian',
     lastChecked: '2024-07-22',
   },
 ];
@@ -77,17 +77,17 @@ const statusConfig: Record<
     label: string;
   }
 > = {
-  Good: { variant: 'default', icon: ThumbsUp, label: 'Good' },
-  Attention: { variant: 'secondary', icon: AlertTriangle, label: 'Attention' },
-  Broken: { variant: 'destructive', icon: CircleX, label: 'Broken' },
+  Baik: { variant: 'default', icon: ThumbsUp, label: 'Baik' },
+  Perhatian: { variant: 'secondary', icon: AlertTriangle, label: 'Perhatian' },
+  Rusak: { variant: 'destructive', icon: CircleX, label: 'Rusak' },
 };
 
 export default function DashboardPage() {
   const total = equipmentData.length;
   const checked = equipmentData.filter(e => e.lastChecked === new Date().toISOString().split('T')[0] || new Date(e.lastChecked) > new Date(new Date().setDate(new Date().getDate()-1))).length;
-  const good = equipmentData.filter((e) => e.status === 'Good').length;
-  const attention = equipmentData.filter((e) => e.status === 'Attention').length;
-  const broken = equipmentData.filter((e) => e.status === 'Broken').length;
+  const good = equipmentData.filter((e) => e.status === 'Baik').length;
+  const attention = equipmentData.filter((e) => e.status === 'Perhatian').length;
+  const broken = equipmentData.filter((e) => e.status === 'Rusak').length;
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 animate-in fade-in-0 duration-500">
@@ -95,80 +95,80 @@ export default function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Total Equipment
+              Total Peralatan
             </CardTitle>
             <CircuitBoard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{total}</div>
-            <p className="text-xs text-muted-foreground">All registered units</p>
+            <p className="text-xs text-muted-foreground">Semua unit terdaftar</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Checked</CardTitle>
+            <CardTitle className="text-sm font-medium">Diperiksa</CardTitle>
             <ClipboardCheck className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{checked}</div>
-            <p className="text-xs text-muted-foreground">Inspected today</p>
+            <p className="text-xs text-muted-foreground">Diperiksa hari ini</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Unchecked</CardTitle>
+            <CardTitle className="text-sm font-medium">Belum Diperiksa</CardTitle>
             <ClipboardList className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{total - checked}</div>
-            <p className="text-xs text-muted-foreground">Pending inspection</p>
+            <p className="text-xs text-muted-foreground">Menunggu pemeriksaan</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Good Condition</CardTitle>
+            <CardTitle className="text-sm font-medium">Kondisi Baik</CardTitle>
             <ThumbsUp className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{good}</div>
-            <p className="text-xs text-muted-foreground">Operational</p>
+            <p className="text-xs text-muted-foreground">Operasional</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Needs Attention</CardTitle>
+            <CardTitle className="text-sm font-medium">Butuh Perhatian</CardTitle>
             <AlertTriangle className="h-4 w-4 text-yellow-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{attention}</div>
-            <p className="text-xs text-muted-foreground">Minor issues found</p>
+            <p className="text-xs text-muted-foreground">Ditemukan masalah kecil</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Broken</CardTitle>
+            <CardTitle className="text-sm font-medium">Rusak</CardTitle>
             <CircleX className="h-4 w-4 text-red-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-headline">{broken}</div>
-            <p className="text-xs text-muted-foreground">Out of service</p>
+            <p className="text-xs text-muted-foreground">Tidak dapat digunakan</p>
           </CardContent>
         </Card>
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>Equipment Overview</CardTitle>
+          <CardTitle>Tinjauan Peralatan</CardTitle>
           <CardDescription>
-            Live status of all equipment units.
+            Status langsung dari semua unit peralatan.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Equipment ID</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead>Last Checked</TableHead>
+                <TableHead>ID Peralatan</TableHead>
+                <TableHead>Lokasi</TableHead>
+                <TableHead>Terakhir Diperiksa</TableHead>
                 <TableHead className="text-right">Status</TableHead>
               </TableRow>
             </TableHeader>
